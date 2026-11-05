@@ -1,0 +1,8 @@
+{
+  "url": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+  "http_status": 200,
+  "content_type": "application/json; charset=utf-8",
+  "byte_length": 2777,
+  "saved_as": "08-agent-card.raw.json",
+  "note": "Byte-for-byte copy of the response body. This is what was hashed."
+}

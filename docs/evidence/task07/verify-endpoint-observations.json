@@ -1,0 +1,38 @@
+{
+  "probed_at": "2026-11-05T02:03:00Z",
+  "note": "Two observations against the PUBLIC x402.org facilitator /verify endpoint. Neither could settle anything: the first sent an empty body, the second advertised a CCD network the facilitator does not serve. /settle was NEVER called; only an OPTIONS preflight was issued to confirm the route exists.",
+  "observations": [
+    {
+      "request": "POST https://x402.org/facilitator/verify with body {}",
+      "http_status": 400,
+      "response": {
+        "isValid": false,
+        "invalidReason": "missing_parameters",
+        "invalidMessage": "Missing paymentPayload or paymentRequirements"
+      },
+      "purpose": "prove the /verify route exists and validates input"
+    },
+    {
+      "request": "POST https://x402.org/facilitator/verify with a CCD testnet requirement + empty signedTransaction",
+      "http_status": 500,
+      "response": {
+        "isValid": false,
+        "invalidReason": "unexpected_error",
+        "invalidMessage": "No facilitator registered for scheme: exact and network: ccd:4221332d34e1694168c2a0c0b3fd0f27"
+      },
+      "purpose": "prove independently that this facilitator does not serve the CCD network, confirming the /supported evidence"
+    },
+    {
+      "request": "OPTIONS https://x402.org/facilitator/settle",
+      "http_status": 204,
+      "purpose": "confirm the route exists without invoking settlement"
+    },
+    {
+      "request": "POST https://x402.org/facilitator/nonexistent-xyz with body {}",
+      "http_status": 404,
+      "purpose": "baseline \u2014 unknown routes 404, so the 400/500 above are real handler responses"
+    }
+  ],
+  "settlement_invoked": false,
+  "transactions_submitted": 0
+}

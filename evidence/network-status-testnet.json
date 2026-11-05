@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":1,"result":{"content":[{"type":"text","text":"{\n  \"network\": \"testnet\",\n  \"node_url\": \"https://grpc.testnet.concordium.com:20000\",\n  \"latest_block_height\": 50376472,\n  \"latest_block_hash\": \"8ca9c66a04cae08d5b66ea14ca44b9a90e0f4fc8bfd8513cc113a918320be5b8\",\n  \"indexer_url\": \"http://127.0.0.1:4400\"\n}"}],"isError":false}}

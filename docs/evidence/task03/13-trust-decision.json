@@ -1,0 +1,121 @@
+{
+  "agent_discovered": "PASS",
+  "card_retrieved": "PASS",
+  "card_valid": "PASS",
+  "badge_valid": "PASS",
+  "hash_matches_on_chain": "PASS",
+  "owner_matches": "PASS",
+  "status_active": "PASS",
+  "contract_references_match": "PASS",
+  "trust_decision": "TRUSTED",
+  "evidence": {
+    "discovery": {
+      "found": true,
+      "reason": "token_id matched",
+      "record": {
+        "network": "testnet",
+        "token_id": 1004,
+        "owner_account": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+        "metadata_hash_hex": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+        "agent_wallet": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "status": "Active",
+        "registered_at": "2026-11-04T23:40:17.188+00:00",
+        "last_event_block": 50390177
+      }
+    },
+    "status": "Active",
+    "card": {
+      "url": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+      "http_status": 200,
+      "byte_length": 2777,
+      "content_type": "application/json; charset=utf-8",
+      "error": null
+    },
+    "card_validation": {
+      "errors": [],
+      "warnings": []
+    },
+    "hash": {
+      "local_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+      "on_chain_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+      "byte_length": 2777,
+      "procedure": "sha256(exact response body bytes, no normalisation)",
+      "verdict": "PASS"
+    },
+    "identity": {
+      "badge_owner": "ccd:4221332d34e1694168c2a0c0b3fd0f27:4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "record_owner": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "expected_owner_caip": "ccd:4221332d34e1694168c2a0c0b3fd0f27:4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "cis8004": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0",
+      "expected_cis8004": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0",
+      "cis8": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12801.0",
+      "expected_cis8": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12801.0",
+      "token_address": "ccd:4221332d34e1694168c2a0c0b3fd0f27/cis-2:JyP9YLib1wYgFmztkcKJL",
+      "registration_entry": {
+        "agentId": 1004,
+        "agentRegistry": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0"
+      },
+      "contract_problems": []
+    },
+    "badge": {
+      "raw": {
+        "token_id": 1004,
+        "token_address": "JyP9YLib1wYgFmztkcKJL",
+        "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+        "http_status": 200,
+        "card_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+        "on_chain": {
+          "owner_account": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+          "status": "Active",
+          "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+          "metadata_hash_hex": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564"
+        },
+        "checks": {
+          "on_chain_agent_found": true,
+          "status_active": true,
+          "has_agent_uri": true,
+          "card_fetched": true,
+          "hash_matches_on_chain": true,
+          "badge_present": true,
+          "badge_embedding": "extension",
+          "badge_well_formed": true,
+          "token_address_matches": true,
+          "owner_matches": true,
+          "contracts_match": true,
+          "verify_present": true,
+          "extension_conformant": true,
+          "verification_present": true,
+          "verify_url_matches": true
+        },
+        "badge_valid": true,
+        "issues": [],
+        "network": "testnet",
+        "expected": {
+          "chain": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+          "contracts": {
+            "cis8004": "12802,0",
+            "cis8": "12801,0"
+          }
+        }
+      },
+      "error": null
+    },
+    "meta": {
+      "task": "TASK 03 — read-only discovery & independent cross-agent verification",
+      "network": "testnet",
+      "caip2": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "token_id": 1004,
+      "token_address": "JyP9YLib1wYgFmztkcKJL",
+      "owner": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "card_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+      "expected_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+      "performed_at": "2026-11-05T00:53:39.430Z",
+      "transactions_performed": 0,
+      "registry_schema_verified_at_runtime": true,
+      "search_param_used": "q",
+      "hosted_checker_role": "corroboration only — never the sole basis for a verdict",
+      "local_verdict_source": "bytes fetched by this process, hashed locally"
+    }
+  }
+}

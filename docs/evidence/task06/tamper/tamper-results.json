@@ -1,0 +1,130 @@
+[
+  {
+    "case": "01-content-modified",
+    "expected": "hash mismatch",
+    "detected": true,
+    "problems": [
+      "line 3: hash mismatch — content was modified after signing"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "02-hash-modified",
+    "expected": "hash mismatch",
+    "detected": true,
+    "problems": [
+      "line 2: hash mismatch — content was modified after signing",
+      "line 3: prev_hash mismatch — links to 86a209c2acf5…, expected ffffffffffff… (deleted, inserted, reordered or rewritten)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "03-link-broken",
+    "expected": "prev_hash mismatch",
+    "detected": true,
+    "problems": [
+      "line 4: prev_hash mismatch — links to aaaaaaaaaaaa…, expected 21cebd45f6bf… (deleted, inserted, reordered or rewritten)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "04-middle-deleted",
+    "expected": "prev_hash mismatch + truncated",
+    "detected": true,
+    "problems": [
+      "line 3: prev_hash mismatch — links to 21cebd45f6bf…, expected 86a209c2acf5… (deleted, inserted, reordered or rewritten)",
+      "line 3: seq 4, expected 3 for session cs_20261105013832876_mkgmkd",
+      "log truncated: 4 event(s) present, checkpoint vouches for 8 (tail deleted or log rolled back)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "05-event-inserted",
+    "expected": "prev_hash mismatch",
+    "detected": true,
+    "problems": [
+      "line 3: prev_hash mismatch — links to 000000000000…, expected 86a209c2acf5… (deleted, inserted, reordered or rewritten)",
+      "line 3: seq 2, expected 3 for session cs_20261105013832876_mkgmkd",
+      "line 4: prev_hash mismatch — links to 86a209c2acf5…, expected 0d8f38217ddd… (deleted, inserted, reordered or rewritten)",
+      "log truncated: 5 event(s) present, checkpoint vouches for 8 (tail deleted or log rolled back)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "06-reordered",
+    "expected": "prev_hash mismatch + seq",
+    "detected": true,
+    "problems": [
+      "line 2: prev_hash mismatch — links to 86a209c2acf5…, expected 4c9ae93f3473… (deleted, inserted, reordered or rewritten)",
+      "line 2: seq 3, expected 2 for session cs_20261105013832876_mkgmkd",
+      "line 3: prev_hash mismatch — links to 4c9ae93f3473…, expected 21cebd45f6bf… (deleted, inserted, reordered or rewritten)",
+      "line 3: seq 2, expected 4 for session cs_20261105013832876_mkgmkd",
+      "line 4: prev_hash mismatch — links to 21cebd45f6bf…, expected 86a209c2acf5… (deleted, inserted, reordered or rewritten)",
+      "line 4: seq 4, expected 3 for session cs_20261105013832876_mkgmkd"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "07-tail-truncated",
+    "expected": "log truncated",
+    "detected": true,
+    "problems": [
+      "log truncated: 5 event(s) present, checkpoint vouches for 8 (tail deleted or log rolled back)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "08-rolled-back-to-valid-prefix",
+    "expected": "log truncated",
+    "detected": true,
+    "problems": [
+      "log truncated: 4 event(s) present, checkpoint vouches for 8 (tail deleted or log rolled back)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "09-checkpoint-deleted",
+    "expected": "checkpoint missing (strict mode)",
+    "detected": true,
+    "problems": [
+      "checkpoint missing — truncation and rollback cannot be detected"
+    ],
+    "warnings": [],
+    "checkpoint_present": false
+  },
+  {
+    "case": "10-checkpoint-corrupted",
+    "expected": "checkpoint is not valid JSON",
+    "detected": true,
+    "problems": [
+      "checkpoint is not valid JSON (corrupted)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "11-torn-tail",
+    "expected": "not valid JSON",
+    "detected": true,
+    "problems": [
+      "line 9: not valid JSON (torn or corrupted write)"
+    ],
+    "warnings": [],
+    "checkpoint_present": true
+  },
+  {
+    "case": "12-full-rewrite-with-checkpoint",
+    "expected": "UNDETECTABLE by design (documented limitation)",
+    "detected": false,
+    "problems": [],
+    "note": "verifier accepts: a consistent rewrite of log+checkpoint is outside the threat model"
+  }
+]

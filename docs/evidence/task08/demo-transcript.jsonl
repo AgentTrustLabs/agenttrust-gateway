@@ -1,0 +1,14 @@
+{"step":"initialize","at":"2026-11-05T02:30:34.069Z","detail":{"protocolVersion":"2024-11-05","serverInfo":{"name":"agenttrust-gateway","version":"1.0.0"},"capabilities":{"tools":{}}}}
+{"step":"tools/list","at":"2026-11-05T02:30:34.071Z","detail":{"count":6,"names":["registry.search","registry.card","trust.verify","trust.policy","commerce.simulate","audit.verify"]}}
+{"step":"registry.search","at":"2026-11-05T02:30:34.653Z","detail":{"isError":false,"returned":1,"token_ids":[1004]}}
+{"step":"registry.card","at":"2026-11-05T02:30:34.964Z","detail":{"isError":false,"byte_length":2777,"sha256":"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564","agent_uri":"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json","status":"Active"}}
+{"step":"trust.verify","at":"2026-11-05T02:30:35.204Z","detail":{"decision":"TRUSTED","checks":{"agent_discovered":"PASS","card_retrieved":"PASS","card_valid":"PASS","badge_valid":"NOT_TESTED","hash_matches_on_chain":"PASS","owner_matches":"PASS","status_active":"PASS","contract_references_match":"PASS"}}}
+{"step":"4. second agent","at":"2026-11-05T02:30:36.011Z","detail":{"selected":19,"decision":"REJECTED","fixture":false}}
+{"step":"trust.policy","at":"2026-11-05T02:30:36.012Z","detail":{"allowed":true,"code":"ALLOWED","verdict_source":"client_supplied"}}
+{"step":"commerce.simulate","at":"2026-11-05T02:30:36.263Z","detail":{"stage":"access_granted","granted":true,"settled":false}}
+{"step":"commerce.simulate (trust rejection)","at":"2026-11-05T02:30:36.525Z","detail":{"stage":"trust_rejected","granted":false,"facilitator_calls":[],"requirement":null}}
+{"step":"commerce.simulate (mock payment rejection)","at":"2026-11-05T02:30:36.787Z","detail":{"stage":"payment_rejected","granted":false,"receipt":null,"settled":false}}
+{"step":"commerce.simulate (forged authorization)","at":"2026-11-05T02:30:36.788Z","detail":{"code":"AUTHORIZATION_NOT_ACCEPTED"}}
+{"step":"9. audit.verify","at":"2026-11-05T02:30:36.792Z","detail":{"verified":3,"total":3}}
+{"step":"boundary probes","at":"2026-11-05T02:30:36.793Z","detail":{"path_traversal":{"code":"AUDIT_READ_DENIED"},"registry_override":{"code":"FORBIDDEN_FIELD"}}}
+{"step":"shutdown","at":"2026-11-05T02:30:36.808Z","detail":{"exit_code":0,"forced":false}}

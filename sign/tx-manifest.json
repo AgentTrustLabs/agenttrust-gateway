@@ -1,0 +1,25 @@
+{
+  "_status": "PLACEHOLDER — UNUSED",
+  "_note": "Unfilled template from an early TASK 02 iteration. Every value below except contractAddress, receiveName, suggestedEnergy, sender and network is an unreplaced *_REPLACE marker. No script writes to this file and no script or page reads it. The live signing flow uses signing-site/registration.json, read by signing-site/index.html. This file is retained so the historical artifact is not destroyed; it is NOT a valid signing manifest.",
+  "_superseded_by": "signing-site/registration.json",
+
+  "contractAddress": {
+    "index": 12802,
+    "subindex": 0
+  },
+  "receiveName": "CIS-8004.register",
+  "parameterHex": "PARAM_HEX_REPLACE",
+  "suggestedEnergy": 30000,
+  "sender": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+  "metadataHashHex": "METADATA_HASH_REPLACE",
+  "agentUri": "AGENT_URI_REPLACE",
+  "cardJson": "CARD_JSON_REPLACE",
+  "network": "testnet",
+  "signInstructions": "Open this file in the Concordium Wallet browser extension. Confirm the transaction details. The agent will automatically detect finalization on-chain.",
+  "checks": {
+    "contractIndex": "12802 (CIS-8004 Agent Registry on testnet)",
+    "receiveName": "CIS-8004.register",
+    "noPrivateKeyInvolved": true,
+    "signingViaWalletExtension": true
+  }
+}

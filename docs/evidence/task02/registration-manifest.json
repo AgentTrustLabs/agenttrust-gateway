@@ -1,0 +1,29 @@
+{
+  "task": "TASK 02 — first real CIS-8004 registration",
+  "network": "testnet",
+  "caip2": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+  "generatedAt": "2026-11-04T19:33:37.425Z",
+  "owner": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+  "ownerBalanceMicroCcd": "20000000000",
+  "contract": {
+    "index": 12802,
+    "subindex": 0,
+    "standard": "CIS-8004"
+  },
+  "entrypoint": "CIS-8004.register",
+  "agentUri": "https://agenttrust.sabolabs.dev/.well-known/agent-card.json",
+  "cardSha256": "1f001ec9bd89f8ce48f2d3bf343f9ebd41604155f42f6a2fec426dd5101d7f84",
+  "cardBytes": 2608,
+  "parameterHex": "013b00000068747470733a2f2f6167656e7474727573742e7361626f6c6162732e6465762f2e77656c6c2d6b6e6f776e2f6167656e742d636172642e6a736f6e011f001ec9bd89f8ce48f2d3bf343f9ebd41604155f42f6a2fec426dd5101d7f840000000000",
+  "suggestedEnergy": 30000,
+  "dryRun": {
+    "tag": "success",
+    "usedEnergy": "2072",
+    "predictedTokenId": "256264"
+  },
+  "nextNonce": "1",
+  "status": "awaiting_signature",
+  "privateKeyHandled": false,
+  "tokenId": null,
+  "txHash": null
+}

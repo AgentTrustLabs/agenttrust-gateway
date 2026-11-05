@@ -1,0 +1,196 @@
+{
+  "trust": {
+    "agent_discovered": "PASS",
+    "card_retrieved": "PASS",
+    "card_valid": "PASS",
+    "badge_valid": "NOT_TESTED",
+    "hash_matches_on_chain": "PASS",
+    "owner_matches": "PASS",
+    "status_active": "PASS",
+    "contract_references_match": "PASS",
+    "trust_decision": "TRUSTED",
+    "evidence": {
+      "discovery": {
+        "found": true,
+        "reason": "token_id matched",
+        "record": {
+          "network": "testnet",
+          "token_address": "JyP9YLib1wYgFmztkcKJL",
+          "token_id": "1004",
+          "token_id_u64": 1004,
+          "owner_account": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+          "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+          "metadata_hash_hex": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+          "agent_wallet": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+          "status": "Active",
+          "registered_at": "2026-11-04T23:40:17.188+00:00"
+        }
+      },
+      "status": "Active",
+      "card": {
+        "url": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+        "http_status": 200,
+        "byte_length": 2777,
+        "content_type": "application/json; charset=utf-8",
+        "error": null
+      },
+      "card_validation": {
+        "errors": [],
+        "warnings": []
+      },
+      "hash": {
+        "local_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+        "on_chain_sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+        "byte_length": 2777,
+        "procedure": "sha256(exact response body bytes, no normalisation)",
+        "verdict": "PASS"
+      },
+      "identity": {
+        "badge_owner": "ccd:4221332d34e1694168c2a0c0b3fd0f27:4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "record_owner": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "expected_owner_caip": "ccd:4221332d34e1694168c2a0c0b3fd0f27:4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "cis8004": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0",
+        "expected_cis8004": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0",
+        "cis8": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12801.0",
+        "expected_cis8": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12801.0",
+        "token_address": "ccd:4221332d34e1694168c2a0c0b3fd0f27/cis-2:JyP9YLib1wYgFmztkcKJL",
+        "registration_entry": {
+          "agentId": 1004,
+          "agentRegistry": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0"
+        },
+        "contract_problems": []
+      }
+    }
+  },
+  "policy": {
+    "allowed": true,
+    "code": "ALLOWED",
+    "reason": "all 7 required checks PASS; intent within policy limits",
+    "evaluated": [
+      {
+        "check": "agent_discovered",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "card_retrieved",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "card_valid",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "hash_matches_on_chain",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "owner_matches",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "status_active",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      },
+      {
+        "check": "contract_references_match",
+        "value": "PASS",
+        "required": true,
+        "ok": true
+      }
+    ]
+  },
+  "requirements": {
+    "scheme": "exact",
+    "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+    "asset": "CCD",
+    "amount": "250000",
+    "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+    "maxTimeoutSeconds": 300,
+    "extra": {}
+  },
+  "paymentRequired": {
+    "x402Version": 2,
+    "error": "X-PAYMENT header is required",
+    "resource": {
+      "url": "https://api.sabokun.my.id/agenttrust/paid/resource",
+      "description": "AgentTrust gated resource (mock settlement)",
+      "mimeType": "application/json"
+    },
+    "accepts": [
+      {
+        "scheme": "exact",
+        "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+        "asset": "CCD",
+        "amount": "250000",
+        "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "maxTimeoutSeconds": 300,
+        "extra": {}
+      }
+    ]
+  },
+  "access": {
+    "granted": true,
+    "receipt": {
+      "success": true,
+      "transaction": "25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "amount": "250000",
+      "asset": "CCD",
+      "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "settledAt": "2026-11-05T01:38:41.332Z",
+      "explorerUrl": "https://ccdexplorer.io/testnet/transaction/25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+      "audit": {
+        "agentId": 1004,
+        "tokenAddress": "JyP9YLib1wYgFmztkcKJL"
+      }
+    },
+    "reason": "settled",
+    "verify": {
+      "isValid": true,
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    },
+    "settle": {
+      "success": true,
+      "transaction": "25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    }
+  },
+  "receipt": {
+    "success": true,
+    "transaction": "25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+    "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+    "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+    "amount": "250000",
+    "asset": "CCD",
+    "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+    "settledAt": "2026-11-05T01:38:41.332Z",
+    "explorerUrl": "https://ccdexplorer.io/testnet/transaction/25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+    "audit": {
+      "agentId": 1004,
+      "tokenAddress": "JyP9YLib1wYgFmztkcKJL"
+    }
+  },
+  "stage": "access_granted",
+  "granted": true,
+  "reason": "trust verified and payment settled",
+  "sessionId": "cs_20261105013832876_mkgmkd",
+  "audit": {
+    "sessionId": "cs_20261105013832876_mkgmkd",
+    "events": 8,
+    "jsonl": "{\"seq\":1,\"event_id\":\"236aa953-8b06-4634-acc7-c2c498da2e19\",\"timestamp\":\"2026-11-05T01:38:41.325Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"agent.discovered\",\"outcome\":\"PASS\",\"reason\":\"token found in registry\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"evidence_ref\":\"evidence.discovery\",\"prev_hash\":\"0000000000000000000000000000000000000000000000000000000000000000\",\"hash\":\"4c9ae93f347328e999752d568172090e9634efb160ac91fa033ef36ab344e108\"}\n{\"seq\":2,\"event_id\":\"0fea7319-8dcb-47ee-990f-2d6627064a21\",\"timestamp\":\"2026-11-05T01:38:41.326Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"agent.card.retrieved\",\"outcome\":\"PASS\",\"reason\":\"card fetched (2777 bytes)\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"evidence_ref\":\"evidence.card\",\"prev_hash\":\"4c9ae93f347328e999752d568172090e9634efb160ac91fa033ef36ab344e108\",\"hash\":\"86a209c2acf502d692a9743459dd7d7dcdba1c6369ab1b046bc00745ddcbc7b3\"}\n{\"seq\":3,\"event_id\":\"5a344938-1400-41b7-9f3d-bce4d8929548\",\"timestamp\":\"2026-11-05T01:38:41.327Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"agent.trust.verified\",\"outcome\":\"PASS\",\"reason\":\"all independent checks PASS; hash matches on-chain anchor\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"evidence_ref\":\"trust.evidence.hash.local_sha256\",\"prev_hash\":\"86a209c2acf502d692a9743459dd7d7dcdba1c6369ab1b046bc00745ddcbc7b3\",\"hash\":\"21cebd45f6bf3ba27380cc20bd9b25b6854519b07c296d46efd267d46feb28eb\"}\n{\"seq\":4,\"event_id\":\"615f4b85-70d7-4001-b0f7-75dbccf4dfbe\",\"timestamp\":\"2026-11-05T01:38:41.329Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"payment.requirement.created\",\"outcome\":\"PASS\",\"reason\":\"exact 250000 CCD on ccd:4221332d34e1694168c2a0c0b3fd0f27\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"payment\":{\"requirement_id\":\"req_ccd:4221332d34e1694168c2a0c0b3fd0f27:250000\",\"amount\":\"250000\",\"asset\":\"CCD\",\"network\":\"ccd:4221332d34e1694168c2a0c0b3fd0f27\",\"pay_to\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\"},\"evidence_ref\":\"requirements\",\"prev_hash\":\"21cebd45f6bf3ba27380cc20bd9b25b6854519b07c296d46efd267d46feb28eb\",\"hash\":\"bed550127fd24b648700fd1a1cfa2148c4da726ac4c13baaf404b80486dafce9\"}\n{\"seq\":5,\"event_id\":\"2522be0a-a534-4fd5-a6b6-d239c446fe55\",\"timestamp\":\"2026-11-05T01:38:41.330Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"payment.payload.received\",\"outcome\":\"PASS\",\"reason\":\"client payload received (partially signed; sponsor slot empty)\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"payment\":{\"requirement_id\":\"req_ccd:4221332d34e1694168c2a0c0b3fd0f27:250000\",\"amount\":\"250000\",\"asset\":\"CCD\",\"network\":\"ccd:4221332d34e1694168c2a0c0b3fd0f27\",\"payer\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\"},\"evidence_ref\":\"payment.payload.header\",\"prev_hash\":\"bed550127fd24b648700fd1a1cfa2148c4da726ac4c13baaf404b80486dafce9\",\"hash\":\"702668a1d28636297070c3952522067a96cf139af8407d15a16a98d45c188308\"}\n{\"seq\":6,\"event_id\":\"27874e04-a875-41b4-9ede-8e0f81845426\",\"timestamp\":\"2026-11-05T01:38:41.332Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"payment.verified\",\"outcome\":\"PASS\",\"reason\":\"facilitator verified the payment payload\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"payment\":{\"requirement_id\":\"req_ccd:4221332d34e1694168c2a0c0b3fd0f27:250000\",\"amount\":\"250000\",\"asset\":\"CCD\",\"network\":\"ccd:4221332d34e1694168c2a0c0b3fd0f27\"},\"evidence_ref\":\"access.verify\",\"prev_hash\":\"702668a1d28636297070c3952522067a96cf139af8407d15a16a98d45c188308\",\"hash\":\"b358514457559436da132ff2ae10980780f2d3b2261b39dfa837d28676bee57b\"}\n{\"seq\":7,\"event_id\":\"77b36878-c29b-478e-b329-6d9f0b95635a\",\"timestamp\":\"2026-11-05T01:38:41.333Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"payment.settlement.simulated\",\"outcome\":\"PASS\",\"reason\":\"mock settlement produced transaction 25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"payment\":{\"requirement_id\":\"req_ccd:4221332d34e1694168c2a0c0b3fd0f27:250000\",\"amount\":\"250000\",\"asset\":\"CCD\",\"network\":\"ccd:4221332d34e1694168c2a0c0b3fd0f27\",\"transaction\":\"25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6\",\"payer\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\"},\"evidence_ref\":\"access.settle\",\"prev_hash\":\"b358514457559436da132ff2ae10980780f2d3b2261b39dfa837d28676bee57b\",\"hash\":\"6e4c859d40933b70dbc4385a74c026fc665e1645029452d04ff0b405b57c8339\"}\n{\"seq\":8,\"event_id\":\"fbe0eebf-1db8-405a-bf49-5d2c89b80cd0\",\"timestamp\":\"2026-11-05T01:38:41.334Z\",\"session_id\":\"cs_20261105013832876_mkgmkd\",\"type\":\"commerce.access.granted\",\"outcome\":\"PASS\",\"reason\":\"paid access granted after settlement 25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6\",\"agent\":{\"token_id\":1004,\"token_address\":\"JyP9YLib1wYgFmztkcKJL\",\"owner_account\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\",\"agent_uri\":\"https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json\",\"metadata_sha256\":\"3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564\"},\"payment\":{\"requirement_id\":\"req_ccd:4221332d34e1694168c2a0c0b3fd0f27:250000\",\"amount\":\"250000\",\"asset\":\"CCD\",\"network\":\"ccd:4221332d34e1694168c2a0c0b3fd0f27\",\"transaction\":\"25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6\",\"payer\":\"4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d\"},\"evidence_ref\":\"receipt.transaction\",\"prev_hash\":\"6e4c859d40933b70dbc4385a74c026fc665e1645029452d04ff0b405b57c8339\",\"hash\":\"6f7120ed112e252499e8bba185d466a96889f59223660626eb714485dda6d87b\"}\n"
+  }
+}

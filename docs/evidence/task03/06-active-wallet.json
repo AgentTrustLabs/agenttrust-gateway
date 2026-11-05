@@ -1,0 +1,10 @@
+{
+  "is_active": {
+    "exists": true,
+    "status": "Active",
+    "active": true
+  },
+  "agent_wallet": {
+    "agent_wallet": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+  }
+}

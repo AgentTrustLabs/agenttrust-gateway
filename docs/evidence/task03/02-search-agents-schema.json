@@ -1,0 +1,8 @@
+{
+  "tool": "search_agents",
+  "required": [
+    "q"
+  ],
+  "queryParamIs": "q",
+  "note": "Asserted at runtime; \"query\" is NOT accepted (schema drift guard)."
+}

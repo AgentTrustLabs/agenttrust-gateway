@@ -1,0 +1,28 @@
+{
+  "httpStatus": 402,
+  "headers": {
+    "content-type": "application/json"
+  },
+  "body": {
+    "x402Version": 2,
+    "error": "X-PAYMENT header is required",
+    "resource": {
+      "url": "https://api.sabokun.my.id/agenttrust/paid/resource",
+      "description": "AgentTrust paid resource",
+      "mimeType": "application/json"
+    },
+    "accepts": [
+      {
+        "scheme": "exact",
+        "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+        "asset": "CCD",
+        "amount": "250000",
+        "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+        "maxTimeoutSeconds": 120,
+        "extra": {
+          "feePayer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+        }
+      }
+    ]
+  }
+}

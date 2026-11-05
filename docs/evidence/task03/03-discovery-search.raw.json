@@ -1,0 +1,18 @@
+{
+  "network": "testnet",
+  "count": 1,
+  "total": 1,
+  "agents": [
+    {
+      "network": "testnet",
+      "token_id": 1004,
+      "owner_account": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+      "metadata_hash_hex": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+      "agent_wallet": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "status": "Active",
+      "registered_at": "2026-11-04T23:40:17.188+00:00",
+      "last_event_block": 50390177
+    }
+  ]
+}

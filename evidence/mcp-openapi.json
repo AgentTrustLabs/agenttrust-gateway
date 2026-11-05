@@ -1,0 +1,172 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Concordium Agent Registry — REST",
+    "version": "1.0.0",
+    "description": "Public REST doors onto the Concordium Agent Registry MCP service. No auth; CORS open; rate-limited per IP.\n\nNaming rule: every MCP tool `verb_noun` that has a REST twin lives at `/v1/verb-noun/{badge}`. Where the object is an agent, the key is the **badge** (its base58 CIS-2 token address) — the network is resolved from it, so `network` is only an override.\n\nThe same functions are available over MCP at `POST /mcp` (JSON-RPC 2.0: `tools/list`, `tools/call`).\n\nEnumeration, search and feeds (list agents, history, recent events, stats) are a separate, resource-style API on the indexer host: https://agent-registry-indexer.concordium.com/ (its `/` lists its routes).\n\nDocs: https://docs.concordium.com/en/mainnet/technical-reference/agent-registry/mcp-service.html"
+  },
+  "servers": [{ "url": "https://agent-registry-mcp.concordium.com" }],
+  "paths": {
+    "/v1/get-badge-JSON/{token_address}": {
+      "get": {
+        "operationId": "getBadgeJson",
+        "summary": "The badge → the JSON block to paste into your Agent Card",
+        "description": "Resolves the agent on chain (owner, agent wallet, external key, network) and returns the exact A2A extension object for `capabilities.extensions`, the ERC-8004 `registrations` entry, and `next_steps`. MCP twin: `get_badge_json`.",
+        "parameters": [
+          { "$ref": "#/components/parameters/TokenAddress" },
+          { "$ref": "#/components/parameters/Network" }
+        ],
+        "responses": {
+          "200": { "description": "Badge JSON", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BadgeJson" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "409": { "$ref": "#/components/responses/Revoked" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/v1/get-badge-json/{token_address}": {
+      "get": {
+        "operationId": "getBadgeJsonLower",
+        "summary": "Lowercase alias of /v1/get-badge-JSON/{token_address}",
+        "parameters": [
+          { "$ref": "#/components/parameters/TokenAddress" },
+          { "$ref": "#/components/parameters/Network" }
+        ],
+        "responses": {
+          "200": { "description": "Badge JSON", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/BadgeJson" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "409": { "$ref": "#/components/responses/Revoked" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/v1/check-badge/{id}": {
+      "get": {
+        "operationId": "checkBadge",
+        "summary": "Verify a badge (or every badge an account owns)",
+        "description": "`id` is a badge token address → verdict for that one badge; or a Concordium account → every badge it owns. Checks the on-chain record, fetches the card and compares its SHA-256 to `metadata_hash`, and validates the badge block (well-formedness, extension-form conformance, verification block). MCP twin: `check_badge`.",
+        "parameters": [
+          { "$ref": "#/components/parameters/Id" },
+          { "$ref": "#/components/parameters/Network" }
+        ],
+        "responses": {
+          "200": { "description": "Verdict", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CheckResult" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/v1/badge-check/{id}": {
+      "get": {
+        "operationId": "badgeCheck",
+        "summary": "Original path of /v1/check-badge/{id} — permanent alias",
+        "description": "Kept forever: it is in the published docs and stamped into every issued badge's `verification.verifyUrl`.",
+        "parameters": [
+          { "$ref": "#/components/parameters/Id" },
+          { "$ref": "#/components/parameters/Network" }
+        ],
+        "responses": {
+          "200": { "description": "Verdict", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CheckResult" } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/v1/verify-agent-card/{token_address}": {
+      "get": {
+        "operationId": "verifyAgentCard",
+        "summary": "Card SHA-256 vs the on-chain metadata_hash",
+        "description": "Fetches `agent_uri`, hashes the served bytes and compares against the on-chain anchor. `match` is true/false, or null when either side is missing. MCP twin: `verify_agent_card` (keyed by token_id; this door accepts the badge).",
+        "parameters": [
+          { "$ref": "#/components/parameters/TokenAddress" },
+          { "$ref": "#/components/parameters/Network" },
+          { "name": "fetch", "in": "query", "schema": { "type": "boolean", "default": true }, "description": "Set false to skip the fetch and only return the on-chain anchor." }
+        ],
+        "responses": {
+          "200": { "description": "Verification result", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/v1/build-set-agent-uri/{token_address}": {
+      "get": {
+        "operationId": "buildSetAgentUri",
+        "summary": "Sign-ready setAgentURI payload — pin a new card hash (and/or URI) on chain",
+        "description": "Returns the CIS-8004 `setAgentURI` parameter as wire hex + schema JSON. The owner's wallet signs and submits (gasless via the sponsor service). Omit `agent_uri` to leave the URI unchanged; omit `metadata_hash_hex` to leave the hash unchanged. This service holds no keys. MCP twin: `build_set_agent_uri`.",
+        "parameters": [
+          { "$ref": "#/components/parameters/TokenAddress" },
+          { "$ref": "#/components/parameters/Network" },
+          { "name": "metadata_hash_hex", "in": "query", "schema": { "type": "string", "pattern": "^[0-9a-fA-F]{64}$" }, "description": "SHA-256 of the bytes served at agent_uri." },
+          { "name": "agent_uri", "in": "query", "schema": { "type": "string", "format": "uri" }, "description": "New card URL, if it changes." },
+          { "name": "sender", "in": "query", "schema": { "type": "string" }, "description": "Account that will sign + submit." }
+        ],
+        "responses": {
+          "200": { "description": "Payload", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/healthz": {
+      "get": {
+        "operationId": "healthz",
+        "summary": "Liveness",
+        "responses": { "200": { "description": "OK", "content": { "application/json": { "schema": { "type": "object", "properties": { "ok": { "type": "boolean" }, "version": { "type": "string" } } } } } } }
+      }
+    },
+    "/mcp": {
+      "post": {
+        "operationId": "mcp",
+        "summary": "MCP transport — JSON-RPC 2.0 (tools/list, tools/call)",
+        "description": "Every tool, including the ones above, is callable here. `tools/list` returns each tool's name, description and input schema.",
+        "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true }, "example": { "jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": { "name": "get_badge_json", "arguments": { "token_address": "Mf22tDVkPKjbJDCFK4W73" } } } } } },
+        "responses": { "200": { "description": "JSON-RPC response (or batch)", "content": { "application/json": { "schema": { "additionalProperties": true } } } } }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "TokenAddress": { "name": "token_address", "in": "path", "required": true, "schema": { "type": "string" }, "description": "The badge: base58 CIS-2 token address, e.g. Mf22tDVkPKjbJDCFK4W73.", "example": "Mf22tDVkPKjbJDCFK4W73" },
+      "Id": { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "description": "A badge token address (one badge) or a Concordium account address (all its badges)." },
+      "Network": { "name": "network", "in": "query", "required": false, "schema": { "type": "string", "enum": ["mainnet", "testnet", "devnet"] }, "description": "Override only — the network is resolved from the badge." }
+    },
+    "schemas": {
+      "BadgeJson": {
+        "type": "object",
+        "required": ["network", "token_address", "token_id", "status", "owner_account", "extension", "next_steps"],
+        "properties": {
+          "network": { "type": "string" },
+          "token_address": { "type": "string" },
+          "token_id": { "type": "integer" },
+          "status": { "type": "string", "enum": ["Active"] },
+          "owner_account": { "type": "string" },
+          "agent_wallet": { "type": "string" },
+          "agent_uri": { "type": "string", "nullable": true },
+          "extension": { "type": "object", "description": "The A2A extension object: {uri, description, required, params}. Paste into capabilities.extensions.", "additionalProperties": true },
+          "registrations_entry": { "type": "object", "description": "ERC-8004 {agentId, agentRegistry} for the top-level registrations array.", "additionalProperties": true },
+          "next_steps": { "type": "array", "items": { "type": "string" } },
+          "docs": { "type": "string", "format": "uri" }
+        }
+      },
+      "CheckResult": {
+        "type": "object",
+        "description": "Single-badge form: badge_valid, checks{...}, issues[...], on_chain{...}. Account form: agent_count, summary{valid,invalid}, agents[...].",
+        "additionalProperties": true
+      },
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": { "error": { "type": "string" }, "message": { "type": "string" } }
+      }
+    },
+    "responses": {
+      "BadRequest": { "description": "Malformed id / arguments, or the tool refused the input", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "NotFound": { "description": "No agent at that token address", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "Revoked": { "description": "The agent is revoked; no badge is issued", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+      "RateLimited": { "description": "Per-IP rate limit exceeded; see Retry-After", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+    }
+  }
+}

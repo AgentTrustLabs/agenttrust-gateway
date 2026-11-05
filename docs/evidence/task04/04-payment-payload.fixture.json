@@ -1,0 +1,46 @@
+{
+  "payload": {
+    "x402Version": 2,
+    "accepted": {
+      "scheme": "exact",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "asset": "CCD",
+      "amount": "250000",
+      "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "maxTimeoutSeconds": 120,
+      "extra": {
+        "feePayer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+      }
+    },
+    "payload": {
+      "signedTransaction": {
+        "version": 1,
+        "header": {
+          "sender": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+          "nonce": 7,
+          "expiry": 1793841495,
+          "executionEnergyAmount": 300,
+          "numSignatures": 1,
+          "sponsor": {
+            "account": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+            "numSignatures": 1
+          }
+        },
+        "payload": {
+          "type": "transfer",
+          "toAddress": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+          "amount": "250000"
+        },
+        "signatures": {
+          "sender": {
+            "0": {
+              "0": "00"
+            }
+          },
+          "sponsor": {}
+        }
+      }
+    }
+  },
+  "note": "STRUCTURAL FIXTURE ONLY. The sender signature is a placeholder; this payload is never settled and would be rejected by a real facilitator at rule 8 (sender signature)."
+}

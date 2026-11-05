@@ -1,0 +1,18 @@
+{
+  "requirements": {
+    "scheme": "exact",
+    "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+    "asset": "CCD",
+    "amount": "250000",
+    "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+    "maxTimeoutSeconds": 120,
+    "extra": {
+      "feePayer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    }
+  },
+  "notes": {
+    "asset": "native CCD (SDK convention: identifier \"CCD\", 6 decimals)",
+    "amount": "atomic units (microCCD)",
+    "feePayer": "facilitator sponsor; carried in extra.feePayer per SDK enhancePaymentRequirements()"
+  }
+}

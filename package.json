@@ -1,0 +1,42 @@
+{
+  "name": "agenttrust",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AgentTrust Gateway — Concordium Agent Registry integration for multi-agent trust and commerce",
+  "type": "module",
+  "files": [
+    "dist/",
+    "scripts/",
+    "src/",
+    "README.md"
+  ],
+  "bin": {
+    "agenttrust": "./dist/cli/index.js",
+    "agenttrust-verify": "./dist/cli/verify.js",
+    "agenttrust-commerce": "./dist/cli/commerce.js",
+    "agenttrust-mcp": "./dist/mcp/server.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "pretest": "tsc",
+    "test": "node test/run.mjs",
+    "verify": "tsc && node dist/cli/verify.js",
+    "commerce": "tsc && node dist/cli/commerce.js",
+    "mcp": "tsc && node dist/mcp/server.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit",
+    "cli": "node --import tsx --experimental-vm-modules dist/cli/index.js"
+  },
+  "dependencies": {
+    "@concordium/web-sdk": "^12.0.2",
+    "@x402/concordium": "^2.29.0",
+    "@x402/core": "^2.29.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "verifyWithNoFacilitator": {
+    "granted": false,
+    "receipt": null,
+    "reason": "verify threw: no facilitator configured: refusing to verify"
+  },
+  "verifyRejected": {
+    "granted": false,
+    "receipt": null,
+    "reason": "verify rejected: amount_mismatch — amount differs",
+    "verify": {
+      "isValid": false,
+      "invalidReason": "amount_mismatch",
+      "invalidMessage": "amount differs"
+    }
+  },
+  "settleFailed": {
+    "granted": false,
+    "receipt": null,
+    "reason": "settle failed: insufficient_funds",
+    "verify": {
+      "isValid": true,
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    },
+    "settle": {
+      "success": false,
+      "transaction": "",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "errorReason": "insufficient_funds"
+    }
+  },
+  "verifiedButNotSettled": {
+    "granted": false,
+    "receipt": null,
+    "reason": "verified only — settlement not requested",
+    "verify": {
+      "isValid": true,
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    }
+  },
+  "expiredPayment": {
+    "granted": false,
+    "receipt": null,
+    "reason": "preflight: payment expired at 1793841075 (now 1793841195)"
+  },
+  "wrongNetwork": {
+    "granted": false,
+    "receipt": null,
+    "reason": "preflight: network mismatch: accepted=ccd:9dd9ca4d19e9393877d2c44b70f89acb required=ccd:4221332d34e1694168c2a0c0b3fd0f27"
+  },
+  "wrongAsset": {
+    "granted": false,
+    "receipt": null,
+    "reason": "preflight: asset mismatch: accepted=USDR required=CCD"
+  },
+  "insufficientAmount": {
+    "granted": false,
+    "receipt": null,
+    "reason": "preflight: amount mismatch: accepted=1 required=250000"
+  },
+  "malformedPayload": {
+    "granted": false,
+    "receipt": null,
+    "reason": "preflight: payment payload has no accepted requirements"
+  }
+}

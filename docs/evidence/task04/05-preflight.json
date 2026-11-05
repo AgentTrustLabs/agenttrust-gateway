@@ -1,0 +1,13 @@
+{
+  "valid": {
+    "ok": true
+  },
+  "amountMismatch": {
+    "ok": false,
+    "reason": "amount mismatch: accepted=1 required=250000"
+  },
+  "wrongVersion": {
+    "ok": false,
+    "reason": "unsupported x402Version 1 (expected 2)"
+  }
+}

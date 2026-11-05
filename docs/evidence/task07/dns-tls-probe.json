@@ -1,0 +1,41 @@
+{
+  "probed_at": "2026-11-05T02:04:11.384668Z",
+  "method": "getent hosts + curl GET /supported (no other endpoint contacted)",
+  "hosts": [
+    {
+      "host": "facilitator.concordium.com",
+      "dns": "nxdomain",
+      "https_supported_status": "000"
+    },
+    {
+      "host": "x402-facilitator.concordium.com",
+      "dns": "nxdomain",
+      "https_supported_status": "000"
+    },
+    {
+      "host": "x402.concordium.com",
+      "dns": "nxdomain",
+      "https_supported_status": "000"
+    },
+    {
+      "host": "facilitator.testnet.concordium.com",
+      "dns": "nxdomain",
+      "https_supported_status": "000"
+    },
+    {
+      "host": "x402.testnet.concordium.com",
+      "dns": "nxdomain",
+      "https_supported_status": "000"
+    },
+    {
+      "host": "agent-registry-mcp.concordium.com",
+      "dns": "resolves",
+      "https_supported_status": "404"
+    },
+    {
+      "host": "x402.org",
+      "dns": "resolves",
+      "https_supported_status": "404"
+    }
+  ]
+}

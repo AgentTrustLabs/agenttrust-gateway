@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AgentTrust — Re-pin Agent Card URI</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; font:15px/1.55 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+         background:#0a0b0d; color:#e6e8eb; }
+  .wrap { max-width:780px; margin:0 auto; padding:40px 20px 80px; }
+  h1 { font-size:20px; margin:0 0 4px; letter-spacing:-.01em; }
+  .sub { color:#8b929c; font-size:13px; margin-bottom:28px; }
+  .card { background:#12141a; border:1px solid #1e2229; border-radius:10px; padding:18px; margin-bottom:14px; }
+  .row { display:flex; justify-content:space-between; gap:14px; padding:7px 0; border-bottom:1px dashed #1e2229; font-size:13px; }
+  .row:last-child { border-bottom:0; }
+  .k { color:#8b929c; flex:0 0 auto; }
+  .v { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; text-align:right;
+       word-break:break-all; color:#cfd4dc; }
+  button { font:inherit; font-weight:600; border:0; border-radius:8px; padding:12px 20px; cursor:pointer;
+           background:#3b82f6; color:#fff; }
+  button:disabled { background:#2a2f38; color:#6b7280; cursor:not-allowed; }
+  .ok { background:#0f2417; border-color:#1d4a2e; color:#7ee2a8; }
+  .err { background:#2a1416; border-color:#54232a; color:#ff9aa8; }
+  #log { white-space:pre-wrap; font-family:ui-monospace,Menlo,monospace; font-size:12px; color:#8b929c; }
+  .bar { height:3px; background:#1e2229; border-radius:2px; overflow:hidden; margin-top:10px; }
+  .bar > i { display:block; height:100%; width:0; background:#3b82f6; transition:width .4s; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Re-pin Agent Card URI</h1>
+  <div class="sub">Concordium Testnet · token 1004 · entrypoint <code>CIS-8004.setAgentURI</code></div>
+
+  <div class="card">
+    <div class="row"><span class="k">Owner (sender)</span><span class="v" id="v-owner">—</span></div>
+    <div class="row"><span class="k">Token id</span><span class="v" id="v-token">—</span></div>
+    <div class="row"><span class="k">New agent_uri</span><span class="v" id="v-uri">—</span></div>
+    <div class="row"><span class="k">Card SHA-256 (unchanged)</span><span class="v" id="v-hash">—</span></div>
+    <div class="row"><span class="k">Amount</span><span class="v">0 CCD</span></div>
+    <div class="row"><span class="k">Max energy</span><span class="v" id="v-energy">—</span></div>
+    <div class="row"><span class="k">Dry-run</span><span class="v" id="v-dry">—</span></div>
+    <div class="row"><span class="k">Argument bytes</span><span class="v" id="v-param">—</span></div>
+  </div>
+
+  <div class="card">
+    <div class="row"><span class="k">Wallet detected</span><span class="v" id="v-wallet">checking…</span></div>
+    <div class="row"><span class="k">Connected account</span><span class="v" id="v-acct">—</span></div>
+  </div>
+
+  <button id="btn-connect" disabled>1 · Connect wallet</button>
+  <button id="btn-sign" disabled>2 · Sign &amp; submit</button>
+
+  <div class="bar"><i id="bar"></i></div>
+  <div class="card" id="out" style="margin-top:14px; display:none;"><div id="log"></div></div>
+
+  <div class="sub" style="margin-top:22px">
+    Only the URI is changing. The card bytes — and therefore the anchored SHA-256 — stay identical,
+    so the registry integrity anchor remains valid across the update.
+  </div>
+</div>
+
+<script type="module">
+const $ = id => document.getElementById(id);
+const log = m => { $('out').style.display='block'; $('log').textContent += m + '\n'; };
+const setBar = p => { $('bar').style.width = p + '%'; };
+
+let m;
+try {
+  m = await (await fetch('./repin.json')).json();
+} catch (e) {
+  log('failed to load repin.json: ' + e.message);
+}
+
+if (m) {
+  $('v-owner').textContent  = m.owner;
+  $('v-token').textContent  = m.tokenId;
+  $('v-uri').textContent    = m.newAgentUri;
+  $('v-hash').textContent   = m.cardSha256;
+  $('v-energy').textContent = m.suggestedEnergy;
+  $('v-dry').textContent    = m.dryRun.tag + ' / ' + m.dryRun.usedEnergy + ' energy' +
+                              (m.dryRun.roundTripVerified ? ' / round-trip OK' : '');
+  $('v-param').textContent  = m.parameterHex.slice(0, 64) + '… (' + m.parameterHex.length / 2 + ' bytes)';
+}
+
+const wallet = window.concordium;
+if (!wallet || typeof wallet.connect !== 'function') {
+  $('v-wallet').textContent = 'not found';
+  log('Concordium Wallet for Web not detected on this origin.');
+} else {
+  $('v-wallet').textContent = 'detected';
+  $('btn-connect').disabled = false;
+}
+
+$('btn-connect').onclick = async () => {
+  try {
+    $('btn-connect').disabled = true;
+    const account = await (wallet.requestAccounts
+      ? (await wallet.requestAccounts())[0]
+      : wallet.connect());
+    $('v-acct').textContent = account;
+    setBar(33);
+    if (account !== m.owner) log('WARNING: connected ' + account + ' != owner ' + m.owner);
+    $('btn-sign').disabled = false;
+  } catch (e) {
+    log('connect failed: ' + (e?.message ?? e));
+    $('btn-connect').disabled = false;
+  }
+};
+
+$('btn-sign').onclick = async () => {
+  const account = $('v-acct').textContent;
+  $('log').textContent = '';
+  try {
+    $('btn-sign').disabled = true;
+    log('[1] payload: ' + m.receiveName + ' @ ' + m.contract.index + '.' + m.contract.subindex);
+
+    const payload = {
+      amount: { microCcdAmount: 0n },
+      address: { index: BigInt(m.contract.index), subindex: BigInt(m.contract.subindex) },
+      receiveName: { value: m.receiveName },
+      maxContractExecutionEnergy: { value: BigInt(m.suggestedEnergy) },
+    };
+    const schema = { type: 'module', value: m.moduleSchemaBase64 };
+
+    log('[2] calling wallet.sendTransaction — approve in the wallet popup');
+    setBar(50);
+
+    const txHash = await Promise.race([
+      wallet.sendTransaction(account, 2, payload, m.parameterJson, schema),
+      new Promise((_, rej) => setTimeout(() => rej(new Error(
+        'TIMEOUT 90s. Click the Concordium extension icon and approve the pending request.'
+      )), 90_000)),
+    ]);
+
+    setBar(100);
+    log('[3] submitted: ' + txHash);
+    $('out').className = 'card ok';
+    try {
+      await fetch('./tx', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ txHash, owner: account, action: 'setAgentURI' }),
+      });
+      log('[4] hash reported to the agent');
+    } catch (e) {
+      log('[4] report failed: ' + e.message);
+    }
+  } catch (e) {
+    log('[!] ' + (e?.name ?? 'Error') + ': ' + (e?.message ?? String(e)));
+    if (e?.stack) log(String(e.stack).split('\n').slice(0, 4).join('\n'));
+    $('out').className = 'card err';
+    setBar(0);
+    $('btn-sign').disabled = false;
+  }
+};
+</script>
+</body>
+</html>

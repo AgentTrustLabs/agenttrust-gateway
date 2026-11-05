@@ -1,0 +1,1 @@
+{"jsonrpc":"2.0","id":1,"result":{"content":[{"type":"text","text":"{\n  \"network\": \"mainnet\",\n  \"node_url\": \"https://grpc.mainnet.concordium.software:20000\",\n  \"latest_block_height\": 53858472,\n  \"latest_block_hash\": \"ff2377b647befff86063beb3cc70df4ef3e6427957a40a270a5f9f64d77b79c0\",\n  \"indexer_url\": \"http://127.0.0.1:4400\"\n}"}],"isError":false}}

@@ -1,0 +1,34 @@
+# ─── dependencies ────────────────────────────────────────────────────────
+node_modules/
+
+# ─── build output ───────────────────────────────────────────────────────
+# Emitted by `npm run build` (tsc); reproducible from src/.
+dist/
+*.tsbuildinfo
+
+# ─── local runtime output ───────────────────────────────────────────────
+# Audit trails written by the MCP server / commerce CLI when no explicit
+# --out is given (default AGENTTRUST_AUDIT_ROOT is /tmp/agenttrust-audit,
+# so nothing here is expected in-tree). Committed evidence under
+# docs/evidence/ and evidence/ is deliberately NOT covered.
+*.log
+npm-debug.log*
+
+# ─── local secrets ──────────────────────────────────────────────────────
+# Never commit real environment files. `.env.example` is intentionally not
+# matched, so a template can be committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.keystore
+
+# ─── editor / OS noise ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~

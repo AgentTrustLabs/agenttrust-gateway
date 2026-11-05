@@ -1,0 +1,16 @@
+{
+  "sdk": {
+    "testnetCaip2": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+    "constants": {
+      "ccdAsset": "CCD",
+      "ccdDecimals": 6,
+      "grpcUrl": "grpc.testnet.concordium.com:20000"
+    },
+    "nodeModuleVersion": "2.29.0"
+  },
+  "parsePrice": {
+    "sdkAsset": "CCD",
+    "sdkAmount": "250000"
+  },
+  "agrees": true
+}

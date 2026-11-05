@@ -1,0 +1,114 @@
+{
+  "installed_versions": {
+    "@x402/concordium": "2.29.0",
+    "@x402/core": "2.29.0",
+    "@concordium/web-sdk": "12.0.2",
+    "node": "v26.7.0"
+  },
+  "package_exports": [
+    ".",
+    "./exact/client",
+    "./exact/server",
+    "./exact/facilitator"
+  ],
+  "root_exports_observed": [
+    "ExactConcordiumScheme (client)",
+    "ClientConcordiumSigner",
+    "ExactConcordiumPayloadV2",
+    "FacilitatorConcordiumSigner",
+    "GrpcConfig",
+    "SignableV1Transaction",
+    "toConcordiumFacilitatorSigner",
+    "CONCORDIUM_MAINNET_CAIP2",
+    "CONCORDIUM_TESTNET_CAIP2",
+    "CONCORDIUM_WILDCARD_CAIP2",
+    "CCD_ASSET_IDENTIFIER",
+    "CCD_DECIMALS",
+    "CONCORDIUM_ADDRESS_REGEX",
+    "MAX_EXPIRY_OFFSET_SECONDS",
+    "DEFAULT_FINALIZATION_TIMEOUT_MS",
+    "getConcordiumGrpcUrl",
+    "getExplorerTxUrl",
+    "parseGrpcUrl"
+  ],
+  "protocol": {
+    "x402Version": 2,
+    "scheme": "exact",
+    "transfer_method": "default",
+    "payment_flows": {
+      "default": {
+        "supported": [
+          "authorization",
+          "upfront"
+        ],
+        "default": "authorization"
+      }
+    },
+    "concordium_mechanism": "V1 sponsored transaction (facilitator sponsors gas, submits, waits for finalization)",
+    "facilitator_rules": 9,
+    "max_expiry_offset_seconds": 600,
+    "default_finalization_timeout_ms": 60000
+  },
+  "interfaces": {
+    "PaymentRequirements": [
+      "scheme",
+      "network",
+      "asset",
+      "amount",
+      "payTo",
+      "maxTimeoutSeconds",
+      "extra"
+    ],
+    "PaymentRequired": [
+      "x402Version",
+      "error?",
+      "resource",
+      "accepts[]",
+      "extensions?"
+    ],
+    "PaymentPayload": [
+      "x402Version",
+      "resource?",
+      "accepted",
+      "payload",
+      "extensions?"
+    ],
+    "VerifyResponse": [
+      "isValid",
+      "invalidReason?",
+      "invalidMessage?",
+      "payer?"
+    ],
+    "SettleResponse": [
+      "success",
+      "errorReason?",
+      "errorMessage?",
+      "payer?",
+      "transaction",
+      "network",
+      "amount?"
+    ],
+    "SchemeNetworkServer": [
+      "parsePrice",
+      "enhancePaymentRequirements",
+      "getAssetDecimals",
+      "registerMoneyParser"
+    ],
+    "SchemeNetworkClient": [
+      "createPaymentPayload(x402Version, requirements)"
+    ],
+    "FacilitatorClient": [
+      "verify",
+      "settle",
+      "getSupported"
+    ]
+  },
+  "diff_vs_task01": [
+    "TASK 01 recorded the README narrative and version 2.29.0 \u2014 confirmed unchanged at 2.29.0.",
+    "TASK 01 described the payload as {signedTransaction, sender}; the installed package's TypeScript type ExactConcordiumPayloadV2 is {signedTransaction} only. The README example is stale relative to the shipped .d.mts.",
+    "TASK 01 said 'client never broadcasts' \u2014 confirmed: client returns a partially-signed tx; the facilitator adds the sponsor signature and submits.",
+    "NEW: the server scheme no longer requires an AssetAmount-without-asset error path to be avoided manually \u2014 parsePrice() throws on money prices without a parser; CCD is never a silent fallback. TASK 01 did not record this.",
+    "NEW: hasRegisteredScheme(network, scheme) takes network FIRST (SDK order), the opposite of the name's reading order. Discovered by execution.",
+    "NEW: @x402/concordium exports CONCORDIUM_ADDRESS_REGEX as {45,55}, which is WIDER than the chain accepts; web-sdk AccountAddress.fromBase58 requires exactly 50 chars. Our module matches the chain."
+  ]
+}

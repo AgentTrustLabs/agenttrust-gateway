@@ -1,0 +1,12 @@
+{
+  "probed_at": "2026-11-05T02:04:04.162Z",
+  "base_url": "https://facilitator.concordium.com",
+  "endpoint": "https://facilitator.concordium.com/supported",
+  "network_under_test": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+  "method": "GET",
+  "outcome": "unreachable",
+  "http_status": null,
+  "elapsed_ms": 52,
+  "failure_kind": "dns_or_tls_failure",
+  "error": "fetch failed"
+}

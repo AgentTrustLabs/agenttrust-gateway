@@ -1,0 +1,37 @@
+{
+  "facilitator": "MOCK — not a real facilitator, no transaction exists",
+  "calls": [
+    "verify",
+    "settle"
+  ],
+  "decision": {
+    "granted": true,
+    "receipt": {
+      "success": true,
+      "transaction": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "amount": "250000",
+      "asset": "CCD",
+      "payTo": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+      "settledAt": "2026-11-05T01:13:15.456Z",
+      "explorerUrl": "https://ccdexplorer.io/testnet/transaction/ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "audit": {
+        "agentId": 1004,
+        "tokenAddress": "JyP9YLib1wYgFmztkcKJL",
+        "purpose": "evidence fixture"
+      }
+    },
+    "reason": "settled",
+    "verify": {
+      "isValid": true,
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    },
+    "settle": {
+      "success": true,
+      "transaction": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "network": "ccd:4221332d34e1694168c2a0c0b3fd0f27",
+      "payer": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "network": "testnet",
+  "network_name": "Concordium TestNet",
+  "cis8004_contract": {
+    "index": 12802,
+    "subindex": 0
+  },
+  "cis8004_module_ref": "142462ff638f53b7bbeae8911d23579ed23e5e3c7e9a0353606019628121a5c6",
+  "cis8004_admin": "3whdieGHx43KKRwQYbC5pAUdmWZ61B7yreNRU9i36MtdCvajR8",
+  "cis8_contract": {
+    "index": 12801,
+    "subindex": 0
+  },
+  "cis8_module_ref": "3236c12fade1b559935906df2e0e43a372234eac5d40599d6e6cb12cdd6b9afd",
+  "supported_standards": [
+    "CIS-0",
+    "CIS-2",
+    "CIS-8004"
+  ],
+  "explorer_base": "https://testnet.ccdscan.io"
+}

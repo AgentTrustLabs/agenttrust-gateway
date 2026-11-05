@@ -1,0 +1,23 @@
+{
+  "about": "CIS-8004 agent registration on Concordium testnet. Sign with the Concordium Wallet for Web (Testnet). No private key appears in this file.",
+  "network": "testnet",
+  "contract": "ccd:4221332d34e1694168c2a0c0b3fd0f27:12802.0",
+  "entrypoint": "CIS-8004.register",
+  "owner": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d",
+  "nextNonce": "1",
+  "transaction": {
+    "header": {
+      "executionEnergyAmount": "30000"
+    },
+    "payload": {
+      "type": "update",
+      "amount": "0",
+      "address": {
+        "index": "12802",
+        "subindex": "0"
+      },
+      "receiveName": "CIS-8004.register",
+      "message": "013b00000068747470733a2f2f6167656e7474727573742e7361626f6c6162732e6465762f2e77656c6c2d6b6e6f776e2f6167656e742d636172642e6a736f6e011f001ec9bd89f8ce48f2d3bf343f9ebd41604155f42f6a2fec426dd5101d7f840000000000"
+    }
+  }
+}

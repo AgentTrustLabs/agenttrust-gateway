@@ -1,0 +1,60 @@
+{
+  "network": "testnet",
+  "contract_address": {
+    "index": 12802,
+    "subindex": 0
+  },
+  "receive_name": "CIS-8004.register",
+  "parameter_json": {
+    "agent_uri": {
+      "Some": [
+        "https://agenttrust.sabolabs.dev/.well-known/agent-card.json"
+      ]
+    },
+    "metadata_hash": {
+      "Some": [
+        [
+          31,
+          0,
+          30,
+          201,
+          189,
+          137,
+          248,
+          206,
+          72,
+          242,
+          211,
+          191,
+          52,
+          63,
+          158,
+          189,
+          65,
+          96,
+          65,
+          85,
+          244,
+          47,
+          106,
+          47,
+          236,
+          66,
+          109,
+          213,
+          16,
+          29,
+          127,
+          132
+        ]
+      ]
+    },
+    "external_reference": {
+      "None": []
+    },
+    "initial_metadata": []
+  },
+  "parameter_hex": "013b00000068747470733a2f2f6167656e7474727573742e7361626f6c6162732e6465762f2e77656c6c2d6b6e6f776e2f6167656e742d636172642e6a736f6e011f001ec9bd89f8ce48f2d3bf343f9ebd41604155f42f6a2fec426dd5101d7f840000000000",
+  "suggested_energy": 30000,
+  "sender": "4dWn8miA4PB7qE7mQpAPtG71JNWz5BBsNJPuq98znRF5evZg4d"
+}

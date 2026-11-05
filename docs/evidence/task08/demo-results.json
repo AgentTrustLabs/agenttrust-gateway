@@ -1,0 +1,388 @@
+{
+  "generated_at": "2026-11-05T02:30:36.808Z",
+  "transport": "stdio JSON-RPC 2.0 (real subprocess; no handler imported directly)",
+  "audit_root": "/tmp/agenttrust-demo-jWAeqg",
+  "on_chain_transactions": 0,
+  "real_settlement": false,
+  "settlement_kind": "MOCK",
+  "shutdown": {
+    "exit_code": 0,
+    "forced": false
+  },
+  "stderr_during_session": "(empty)",
+  "results": {
+    "tools": [
+      {
+        "name": "registry.search",
+        "required": [
+          "query"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "name": "registry.card",
+        "required": [
+          "token_id"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "name": "trust.verify",
+        "required": [
+          "token_id"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "name": "trust.policy",
+        "required": [
+          "trust_decision",
+          "intent"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "name": "commerce.simulate",
+        "required": [
+          "token_id"
+        ],
+        "additionalProperties": false
+      },
+      {
+        "name": "audit.verify",
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    ],
+    "search": {
+      "isError": false,
+      "returned": 1,
+      "token_ids": [
+        1004
+      ]
+    },
+    "card": {
+      "isError": false,
+      "byte_length": 2777,
+      "sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+      "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+      "status": "Active"
+    },
+    "trust": {
+      "isError": false,
+      "decision": "TRUSTED",
+      "checks": {
+        "agent_discovered": "PASS",
+        "card_retrieved": "PASS",
+        "card_valid": "PASS",
+        "badge_valid": "NOT_TESTED",
+        "hash_matches_on_chain": "PASS",
+        "owner_matches": "PASS",
+        "status_active": "PASS",
+        "contract_references_match": "PASS"
+      },
+      "reasons": []
+    },
+    "secondAgent": {
+      "discovered_count": 25,
+      "candidates_tried": [
+        19,
+        18,
+        12,
+        10
+      ],
+      "selected": 19,
+      "trust": {
+        "decision": "REJECTED",
+        "checks": {
+          "agent_discovered": "PASS",
+          "card_retrieved": "PASS",
+          "card_valid": "FAIL",
+          "badge_valid": "NOT_TESTED",
+          "hash_matches_on_chain": "PASS",
+          "owner_matches": "FAIL",
+          "status_active": "PASS",
+          "contract_references_match": "FAIL"
+        },
+        "reasons": [
+          "card_valid=FAIL",
+          "owner_matches=FAIL",
+          "contract_references_match=FAIL"
+        ]
+      },
+      "fixture_used": false,
+      "limitation": null
+    },
+    "policy": {
+      "allowed": true,
+      "code": "ALLOWED",
+      "verdict_source": "client_supplied"
+    },
+    "commerce": {
+      "isError": false,
+      "stage": "access_granted",
+      "granted": true,
+      "settled": false,
+      "disclaimer": "SIMULATED settlement: no transaction was signed, submitted, or recorded on chain.",
+      "facilitator": "mock",
+      "calls": [
+        "verify",
+        "settle"
+      ],
+      "simulated_transaction": "25ed2e41cb483e8469d3dbf1ac97cc97e36a36d0316cc2dfbddb7cef8d8983e6",
+      "simulated_transaction_note": "Derived locally from payTo:amount:asset. NOT a chain hash, never submitted.",
+      "settlement_kind": "SIMULATED",
+      "audit_events": 8,
+      "session_id": "cs_9d7add1e-928b-476f-b3b4-a91dca024683"
+    },
+    "trustRejection": {
+      "stage": "trust_rejected",
+      "granted": false,
+      "facilitator_calls": [],
+      "requirement": null
+    },
+    "paymentRejection": {
+      "stage": "payment_rejected",
+      "granted": false,
+      "receipt": null,
+      "settled": false
+    },
+    "authorizationForge": {
+      "isError": true,
+      "code": "AUTHORIZATION_NOT_ACCEPTED",
+      "message": "OperatorAuthorization cannot be supplied over MCP (field 'authorization'). Authorization is issued out-of-process by the operator; no MCP tool accepts or creates it."
+    },
+    "audit": {
+      "files": 3,
+      "verifications": [
+        {
+          "name": "mcp-1793845836013-xllmrq.jsonl",
+          "ok": true,
+          "events": 8,
+          "problems": [],
+          "warnings": [],
+          "checkpoint": {
+            "count": 8,
+            "head_hash": "b526a530a6f2694687ab086c423dd2fc3b4ff8ad7d36182bdd63616754d02ecf",
+            "matches": true
+          },
+          "event_types": [
+            "agent.discovered",
+            "agent.card.retrieved",
+            "agent.trust.verified",
+            "payment.requirement.created",
+            "payment.payload.received",
+            "payment.verified",
+            "payment.settlement.simulated",
+            "commerce.access.granted"
+          ]
+        },
+        {
+          "name": "mcp-1793845836264-olx8go.jsonl",
+          "ok": true,
+          "events": 4,
+          "problems": [],
+          "warnings": [],
+          "checkpoint": {
+            "count": 4,
+            "head_hash": "1d7cc921463b3497e0e18907ab00abfa77e8062e680ae5816ca5a88210d80021",
+            "matches": true
+          },
+          "event_types": [
+            "agent.discovered",
+            "agent.card.retrieved",
+            "agent.trust.rejected",
+            "commerce.access.denied"
+          ]
+        },
+        {
+          "name": "mcp-1793845836525-kuiswh.jsonl",
+          "ok": true,
+          "events": 7,
+          "problems": [],
+          "warnings": [],
+          "checkpoint": {
+            "count": 7,
+            "head_hash": "a7c57d4e48391eac8904050ad2dfe098952d8c61a6bd86142c4f618f3e4af34e",
+            "matches": true
+          },
+          "event_types": [
+            "agent.discovered",
+            "agent.card.retrieved",
+            "agent.trust.verified",
+            "payment.requirement.created",
+            "payment.payload.received",
+            "payment.rejected",
+            "commerce.access.denied"
+          ]
+        }
+      ]
+    },
+    "boundaries": {
+      "path_traversal": {
+        "code": "AUDIT_READ_DENIED"
+      },
+      "registry_override": {
+        "code": "FORBIDDEN_FIELD"
+      }
+    },
+    "shutdown": {
+      "exit_code": 0,
+      "forced": false
+    }
+  },
+  "log": [
+    {
+      "step": "initialize",
+      "at": "2026-11-05T02:30:34.069Z",
+      "detail": {
+        "protocolVersion": "2024-11-05",
+        "serverInfo": {
+          "name": "agenttrust-gateway",
+          "version": "1.0.0"
+        },
+        "capabilities": {
+          "tools": {}
+        }
+      }
+    },
+    {
+      "step": "tools/list",
+      "at": "2026-11-05T02:30:34.071Z",
+      "detail": {
+        "count": 6,
+        "names": [
+          "registry.search",
+          "registry.card",
+          "trust.verify",
+          "trust.policy",
+          "commerce.simulate",
+          "audit.verify"
+        ]
+      }
+    },
+    {
+      "step": "registry.search",
+      "at": "2026-11-05T02:30:34.653Z",
+      "detail": {
+        "isError": false,
+        "returned": 1,
+        "token_ids": [
+          1004
+        ]
+      }
+    },
+    {
+      "step": "registry.card",
+      "at": "2026-11-05T02:30:34.964Z",
+      "detail": {
+        "isError": false,
+        "byte_length": 2777,
+        "sha256": "3f6144046d843b7bae1b071f279e26c4dc0c4711a30b925220c1dbf94aeab564",
+        "agent_uri": "https://api.sabokun.my.id/agenttrust/.well-known/agent-card.json",
+        "status": "Active"
+      }
+    },
+    {
+      "step": "trust.verify",
+      "at": "2026-11-05T02:30:35.204Z",
+      "detail": {
+        "decision": "TRUSTED",
+        "checks": {
+          "agent_discovered": "PASS",
+          "card_retrieved": "PASS",
+          "card_valid": "PASS",
+          "badge_valid": "NOT_TESTED",
+          "hash_matches_on_chain": "PASS",
+          "owner_matches": "PASS",
+          "status_active": "PASS",
+          "contract_references_match": "PASS"
+        }
+      }
+    },
+    {
+      "step": "4. second agent",
+      "at": "2026-11-05T02:30:36.011Z",
+      "detail": {
+        "selected": 19,
+        "decision": "REJECTED",
+        "fixture": false
+      }
+    },
+    {
+      "step": "trust.policy",
+      "at": "2026-11-05T02:30:36.012Z",
+      "detail": {
+        "allowed": true,
+        "code": "ALLOWED",
+        "verdict_source": "client_supplied"
+      }
+    },
+    {
+      "step": "commerce.simulate",
+      "at": "2026-11-05T02:30:36.263Z",
+      "detail": {
+        "stage": "access_granted",
+        "granted": true,
+        "settled": false
+      }
+    },
+    {
+      "step": "commerce.simulate (trust rejection)",
+      "at": "2026-11-05T02:30:36.525Z",
+      "detail": {
+        "stage": "trust_rejected",
+        "granted": false,
+        "facilitator_calls": [],
+        "requirement": null
+      }
+    },
+    {
+      "step": "commerce.simulate (mock payment rejection)",
+      "at": "2026-11-05T02:30:36.787Z",
+      "detail": {
+        "stage": "payment_rejected",
+        "granted": false,
+        "receipt": null,
+        "settled": false
+      }
+    },
+    {
+      "step": "commerce.simulate (forged authorization)",
+      "at": "2026-11-05T02:30:36.788Z",
+      "detail": {
+        "code": "AUTHORIZATION_NOT_ACCEPTED"
+      }
+    },
+    {
+      "step": "9. audit.verify",
+      "at": "2026-11-05T02:30:36.792Z",
+      "detail": {
+        "verified": 3,
+        "total": 3
+      }
+    },
+    {
+      "step": "boundary probes",
+      "at": "2026-11-05T02:30:36.793Z",
+      "detail": {
+        "path_traversal": {
+          "code": "AUDIT_READ_DENIED"
+        },
+        "registry_override": {
+          "code": "FORBIDDEN_FIELD"
+        }
+      }
+    },
+    {
+      "step": "shutdown",
+      "at": "2026-11-05T02:30:36.808Z",
+      "detail": {
+        "exit_code": 0,
+        "forced": false
+      }
+    }
+  ]
+}

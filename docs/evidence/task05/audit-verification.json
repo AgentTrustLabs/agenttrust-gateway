@@ -1,0 +1,41 @@
+{
+  "docs/evidence/task05/audit-trail.jsonl": {
+    "ok": true,
+    "events": 8,
+    "problems": [],
+    "warnings": [],
+    "checkpoint": {
+      "present": true,
+      "count": 8,
+      "head_hash": "6f7120ed112e252499e8bba185d466a96889f59223660626eb714485dda6d87b",
+      "matches": true
+    },
+    "head_hash": "6f7120ed112e252499e8bba185d466a96889f59223660626eb714485dda6d87b"
+  },
+  "docs/evidence/task05/rejections/payment/audit-trail.jsonl": {
+    "ok": true,
+    "events": 7,
+    "problems": [],
+    "warnings": [],
+    "checkpoint": {
+      "present": true,
+      "count": 7,
+      "head_hash": "608a231f3af4be9bccd56222d3afd74e7416181c5ec41ec342b789908d352e1b",
+      "matches": true
+    },
+    "head_hash": "608a231f3af4be9bccd56222d3afd74e7416181c5ec41ec342b789908d352e1b"
+  },
+  "docs/evidence/task05/rejections/trust/audit-trail.jsonl": {
+    "ok": true,
+    "events": 4,
+    "problems": [],
+    "warnings": [],
+    "checkpoint": {
+      "present": true,
+      "count": 4,
+      "head_hash": "d360a98f4a63b924f2fb572733088cec848bacdf2d27758f1394c4da9beda385",
+      "matches": true
+    },
+    "head_hash": "d360a98f4a63b924f2fb572733088cec848bacdf2d27758f1394c4da9beda385"
+  }
+}
